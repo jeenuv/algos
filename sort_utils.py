@@ -31,14 +31,14 @@ def print_index(n):
     print_array("INDEX", (i for i in range(n)))
 
 
-def get_array(n):
+def get_array(n, r=99):
     """
     Get an array of size n with random integers
     """
-    return [randint(0, 99) for i in range(n)]
+    return [randint(0, r) for i in range(n)]
 
 
-def get_unique_array(n):
+def get_unique_array(n, r=99):
     """
     Get an array of size n with random but unique integers
     """
@@ -46,7 +46,7 @@ def get_unique_array(n):
     i = 0
     while i < n:
         while True:
-            x = randint(0, 99)
+            x = randint(0, r)
             if x not in a:
                 a.append(x)
                 break
