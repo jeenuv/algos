@@ -2,32 +2,28 @@
 
 import sort_utils as su
 
-N = 10
-array = su.get_array(N)
-su.print_index(N)
-su.print_array("start", array)
-
-def merge_sort(a):
-    assert len(a) >= 2
-    if len(a) == 2:
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
+    if len(array) == 2:
         # List has two elements. Simple sort a copy and return it
-        if a[0] > a[1]:
-            tmp = a[:]
+        if array[0] > array[1]:
+            tmp = array[:]
             su.xchg(tmp, 0, 1)
             return tmp
         else:
-            return a
+            return array
     else:
         # List has more than two elements. Split a copy of the list into two,
         # and apply merge sort separately to two lists. Then merge them into one
-        l0 = len(a) // 2
-        l1 = len(a) - l0
+        l0 = len(array) // 2
+        l1 = len(array) - l0
 
         # Call merge sort recursively only if the sub-lists themselves contain
         # than 2. Otherwise, they're sorted already, and we can avoid a function
         # call
-        a0 = merge_sort(a[:l0]) if l0 >= 2 else a[:l0]
-        a1 = merge_sort(a[l0:]) if l1 >= 2 else a[l0:]
+        a0 = merge_sort(array[:l0]) if l0 >= 2 else array[:l0]
+        a1 = merge_sort(array[l0:]) if l1 >= 2 else array[l0:]
 
         # Merge sub-arrays into one
         i0, i1 = 0, 0
@@ -54,8 +50,12 @@ def merge_sort(a):
 
         return m
 
-
-m = merge_sort(array)
-su.check_array(m)
+if __name__ == "__main__":
+    N = 10
+    array = su.get_array(N)
+    su.print_index(N)
+    su.print_array("start", array)
+    m = merge_sort(array)
+    su.check_array(m)
 
 # vim: set tw=80 sw=4:

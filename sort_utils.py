@@ -61,4 +61,7 @@ def xchg(a, i, j):
     a[i] = a[j]
     a[j] = tmp
 
+class SortError(Exception):
+    pass
+
 # vim: set tw=80 sw=4:
