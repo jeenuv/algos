@@ -3,6 +3,11 @@
 import sort_utils as su
 
 def merge_sort(array):
+    """
+    Perform merge sort on 'array'
+    """
+    # Recursively split the array into halves, sort, and merge the halves. Merge
+    # sort is a stable sort (provided merge operation is stable)
     if len(array) <= 1:
         return array
     if len(array) == 2:
@@ -17,13 +22,10 @@ def merge_sort(array):
         # List has more than two elements. Split a copy of the list into two,
         # and apply merge sort separately to two lists. Then merge them into one
         l0 = len(array) // 2
-        l1 = len(array) - l0
 
-        # Call merge sort recursively only if the sub-lists themselves contain
-        # than 2. Otherwise, they're sorted already, and we can avoid a function
-        # call
-        a0 = merge_sort(array[:l0]) if l0 >= 2 else array[:l0]
-        a1 = merge_sort(array[l0:]) if l1 >= 2 else array[l0:]
+        # Call merge sort recursively on both halves
+        a0 = merge_sort(array[:l0])
+        a1 = merge_sort(array[l0:])
 
         # Merge sub-arrays into one
         i0, i1 = 0, 0
@@ -31,7 +33,7 @@ def merge_sort(array):
 
         # Iterate individual arrays, and copy the smallest into a final one,
         # until we exchaust either one
-        while i0 < l0 and i1 < l1:
+        while i0 < len(a0) and i1 < len(a1):
             if a0[i0] < a1[i1]:
                 m.append(a0[i0])
                 i0 += 1
