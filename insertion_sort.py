@@ -3,14 +3,17 @@
 import sort_utils as su
 
 def insertion_sort(array):
+    """
+    Perform insertion sort on 'array'
+    """
     # Compare element at i with everthing behind it. When a lesser element is
     # found, we swap. Stop comparison when one's found. The slice [0:i] always
-    # remain sorted
+    # remain sorted. Insertion sort is a stable sort.
     #
     # It's as if an element at i is inserted into an already-sorted array
-    # [0:i-1].  This could also be performed using binary searching the array
-    # [0:i-1] (as it's already sorted, but it'd involve pushing some elements to
-    # right. But we need to factor in for duplicate elements
+    # [0:i-1]. This could be performed using binary searching the array [0:i-1]
+    # (as it's already sorted), but it'd involve pushing some elements to right.
+    # We also need to factor in for duplicate elements
     n = len(array)
     i = 0
     while i < n:
