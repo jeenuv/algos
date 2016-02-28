@@ -74,18 +74,9 @@ def radix_sort(array, radix=16):
     return array
 
 if __name__ == "__main__":
-    N = 10
-
-    array = su.get_array(N, 999)
-    su.print_index(N)
-    su.print_array("start", array)
-    array = radix_sort(array, 16)
-    su.check_array(array)
-
-    array = su.get_array(N, 999)
-    su.print_index(N)
-    su.print_array("start", array)
-    array = radix_sort(array, 10)
-    su.check_array(array)
+    print("Sort with radix 16");
+    su.test_sort(radix_sort, args=(16,))
+    print("Sort with radix 10");
+    su.test_sort(radix_sort, args=(10,))
 
 # vim: set tw=80 sw=4:

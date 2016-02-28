@@ -61,6 +61,25 @@ def xchg(a, i, j):
     a[i] = a[j]
     a[j] = tmp
 
+
+def test_sort(sorting_method, n=10, *, args=None, unique=False):
+    """
+    Check 'sorting_method' by invoking it on an array, with optional arguments
+    'args'
+    """
+    if unique:
+        array = get_unique_array(n)
+    else:
+        array = get_array(n)
+    print_index(n)
+    print_array("start", array)
+    if args:
+        array = sorting_method(array, *args)
+    else:
+        array = sorting_method(array)
+    check_array(array)
+    return array
+
 class SortError(Exception):
     pass
 

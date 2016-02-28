@@ -27,11 +27,6 @@ def bubble_sort(array):
 
 
 if __name__ == "__main__":
-    N = 10
-    array = su.get_array(N)
-    su.print_index(N)
-    su.print_array("start", array)
-    array = bubble_sort(array)
-    su.check_array(array)
+    su.test_sort(bubble_sort)
 
 # vim: set tw=80 sw=4:

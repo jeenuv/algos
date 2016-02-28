@@ -53,11 +53,6 @@ def merge_sort(array):
         return m
 
 if __name__ == "__main__":
-    N = 10
-    array = su.get_array(N)
-    su.print_index(N)
-    su.print_array("start", array)
-    m = merge_sort(array)
-    su.check_array(m)
+    su.test_sort(merge_sort)
 
 # vim: set tw=80 sw=4:
