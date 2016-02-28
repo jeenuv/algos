@@ -2,9 +2,10 @@
 
 import sort_utils as su
 
-def insertion_sort(array):
+def insertion_sort(array, *, stride=1):
     """
-    Perform insertion sort on 'array'
+    Perform insertion sort on 'array'. The 'stride' parameter is useful for
+    shell sort
     """
     # Compare element at i with everthing behind it. When a lesser element is
     # found, we swap. Stop comparison when one's found. The slice [0:i] always
@@ -18,9 +19,9 @@ def insertion_sort(array):
     i = 0
     while i < n:
         j = i
-        while j > 0 and array[j - 1] > array[j]:
-            su.xchg(array, j, j - 1)
-            j -= 1
+        while j >= stride and array[j - stride] > array[j]:
+            su.xchg(array, j, j - stride)
+            j -= stride
         i += 1
 
     return array

@@ -1,23 +1,9 @@
 #!/usr/bin/python3
 
 import sort_utils as su
+from insertion_sort import insertion_sort
 
 def shell_sort(array):
-    def insertion_sort(h):
-        """
-        Perform ordinary insertion sort, but start at h. Perform comparisons
-        with previous elements with stride stride 'h'
-        """
-        i = h
-        while i < n:
-            j = i
-            while j >= h and array[j - h] > array[j]:
-                su.xchg(array, j - h, j)
-                j -= h
-            i += 1
-
-        return array
-
     def find_h(n):
         """
         For a given 'n', find an largest h such that (3*h + 1) < n
@@ -34,7 +20,7 @@ def shell_sort(array):
     n = len(array)
     h = find_h(n)
     while h > 0:
-        array = insertion_sort(h)
+        array = insertion_sort(array, stride=h)
         h = h // 3
 
     return array
